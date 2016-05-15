@@ -1,0 +1,29 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../../bower_components/paper-item/paper-item.html">
+
+<dom-module id="my-authors">
+	<template>
+		<iron-ajax 
+			auto
+	    	url="http://localhost:9000/author/author"
+	    	handle-as="json"
+	    	last-response="{{data}}"></iron-ajax>
+
+		<template is="dom-repeat" items="[[data]]" as="author">
+	 		<paper-item>[[author.name]]</paper-item>
+		</template>
+
+	</template>
+
+	<script>
+    (function() {
+      'use strict';
+
+      Polymer({
+        is: 'my-authors'
+
+      });
+    })();
+  </script>
+</dom-module>
