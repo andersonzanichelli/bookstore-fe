@@ -1,0 +1,45 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../bower_components/paper-dialog/paper-dialog.html">
+
+<dom-module id="my-authors-edit">
+	
+  <template>
+    
+    <paper-dialog id="author" style="overflow: visible;">
+      <paper-input id="name" value="{{name}}" bind-value="{{name}}" label="Author"></paper-input>
+      <paper-input id="book" value="{{book}}" bind-value="{{book}}" label="Book"></paper-input>
+
+      <paper-button>Save</paper-button>
+    </paper-dialog>
+
+    
+  </template>
+
+
+	<script>
+    (function() {
+      Author = Polymer({
+        is: 'my-authors-edit',
+
+        factoryImpl: function() {
+        },
+
+        properties: {
+          name: String,
+          books: Array
+        },
+
+        open: function() {
+          document.getElementById("author").open();
+        },
+              
+        destroyDialog: function() {
+          Polymer.dom(document.body).removeChild(this);
+        }
+
+      });
+    })();
+  </script>
+</dom-module>
